@@ -1,0 +1,245 @@
+:root {
+    --secundary-background-color: rgb(200, 200, 200);
+    --primary-background-color: white;
+    --color: rgb(4, 190, 4);
+    --primary-color-hover: rgb(0, 200, 0);
+    --principal-text-color: black;
+    --secundary-text-color: white;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--secundary-background-color);
+    font-family: var(--font-family);
+    color: var(--principal-text-color);
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    background-color: var(--color);
+    height: 70px;
+    padding: 15px 0px;
+    color: var(--secundary-text-color);
+}
+
+#barra-superior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0px 20px;
+
+    background-color: var(--color);
+    color: var(--secundary-text-color);
+}
+
+li div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+img {
+    width: 37px;
+}
+
+#titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+#titulo h1 {
+    white-space: nowrap;
+    margin: 0;
+}
+
+#BarraPrincipal h1 {
+    white-space: nowrap;
+    margin: 0;
+}
+
+.menu-item { 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: max-content;
+}
+
+.menu-direita {
+    display: flex;
+    margin-left: 650px;
+}
+
+.menu-item:hover {
+    background-color: var(--primary-color-hover);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#BarraPrincipal {
+    padding: 40px 40px;
+}
+
+#BarraPrincipal input {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 5px 5px;
+    width: 695px;
+    height: 35px;
+    font-family: var(--font-family);
+}
+
+#BNTadcionar {
+    border-radius: 5px;
+    height: 35px;
+    width: 70px;
+    font-family: var(--font-family);
+    background-color: var(--color);
+    border-color: var(--color);
+    color: var(--secundary-text-color);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#BarraPrincipal ul{   
+    padding: 10px;
+    width: 770px;
+    height: 45px;
+}
+
+#asDuasBarras {
+    display: flex;
+    align-items: flex-start;
+    gap: 65px;
+}
+
+.Direita {
+    margin-left: auto;
+}
+
+.area-produtos{
+    display: flex;
+    flex-direction: column;
+    width: 770px;
+}
+
+#Table1 {
+    border-collapse: collapse;
+    height: 500px;
+    width: 750px;   
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+#Table1 thead {
+    background-color: var(--color);
+    color: var(--secundary-text-color);
+}
+
+#Table1 th,
+#Table1 td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+#Table1 th {
+    text-align: left;
+}
+
+#Table1 tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+#Table1 tbody tr:hover {
+    background-color: #eeeeee;
+}
+
+.scroll-tabela { 
+    max-height: 450px;
+    overflow-y: auto;
+    width: 770px;
+}
+
+#Table2 {
+    padding: 15px;
+    border-collapse: collapse;
+    width: 100%;   
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+#Table2 thead {
+    background-color: var(--color);
+    color: var(--secundary-text-color);
+}
+
+#Table2 thead {
+    display: table-header-group;
+    width: 100%;
+}
+
+#Table2 thead tr {
+    width: 100%;
+}
+
+#Table2 th,
+#Table2 td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+#Table2 th {
+    text-align: left;
+}
+
+#Table2 tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+}
+
+#Table2 tbody tr:hover {
+    background-color: #eeeeee;
+}
+
+#BTNcompletarCompra {
+    border-radius: 5px;
+    height: 35px;
+    width: 550px;
+    font-family: var(--font-family);
+    background-color: var(--color);
+    border-color: var(--color);
+    color: var(--secundary-text-color);
+    margin-top: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#BarraInferior ul {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 80px;
+    gap: 100px;
+}
+
+#BarraInferior img {
+    width: 40px;
+}
