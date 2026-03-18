@@ -90,11 +90,20 @@ img {
     padding: 40px 40px;
 }
 
-#BarraPrincipal input {
+#códigoDoproduto {
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 5px 5px;
-    width: 695px;
+    width: 650px;
+    height: 35px;
+    font-family: var(--font-family);
+}
+
+#QTDDoproduto {
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 5px 5px;
+    width: 45px;
     height: 35px;
     font-family: var(--font-family);
 }
@@ -135,7 +144,7 @@ img {
 
 #Table1 {
     border-collapse: collapse;
-    height: 500px;
+    height: 0px;
     width: 750px;   
     background-color: white;
     border-radius: 6px;
