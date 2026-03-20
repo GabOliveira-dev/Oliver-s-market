@@ -38,48 +38,68 @@ const produtos = {
     130: { nome: "Creme Dental", preco: 6 }
 }
 
+function criarLinha(codigo, nome, quantidade, preco) {
+    const tr = document.createElement("tr");
+
+    // ligação com o código
+    tr.setAttribute("data-codigo", codigo);
+
+    const thPro = document.createElement("th");
+    thPro.textContent = nome;
+
+    const thQTD = document.createElement("th");
+    thQTD.textContent = quantidade;
+
+    const thPre = document.createElement("th");
+    thPre.textContent = `R$${preco}`;
+
+    const thSub = document.createElement("th");
+    const subtotal = preco * quantidade;
+    thSub.textContent = `R$${subtotal}`;
+
+    tr.appendChild(thPro);
+    tr.appendChild(thQTD);
+    tr.appendChild(thPre);
+    tr.appendChild(thSub);
+
+    tabela.appendChild(tr);
+
+    return(tr)
+}
+
 //Verificação/criação 
-const BTNAdicionar = document.getElementById("BNTadcionar")
+const BTNAdicionar = document.getElementById("BNTadcionar") 
+BTNAdicionar.addEventListener("click", () => { 
 
-BTNAdicionar.addEventListener("click", () => {
-    //Valores
-    const codigoDosProdutos = document.getElementById("códigoDoproduto").value
-    const QTDdosprodutos = document.getElementById("QTDDoproduto").value
+    //Valores 
+    const codigoDosProdutos = document.getElementById("códigoDoproduto").value 
+    const QTDdosprodutos = document.getElementById("QTDDoproduto").value 
 
-    //verificação
-    if (codigoDosProdutos.trim() === ""){
-        alert("Coloque o código do produto")
-        return
-    }else if (QTDdosprodutos.trim() === ""){
-        alert("Coloque a quantidade do produto")
-        return
-    }else {
-        //Verificação se o código está certo
-        const codigo = parseInt(codigoDosProdutos)
-        const qtd = parseInt(QTDdosprodutos)
-        const tabela = document.getElementById("tabela")
+    //verificação 
+    if (codigoDosProdutos.trim() === ""){ 
+    alert("Coloque o código do produto") 
+    return 
+    }else if (QTDdosprodutos.trim() === ""){ 
+    alert("Coloque a quantidade do produto") 
+    return 
+    }else{
+    if (produtos[codigoDosProdutos]){
+        const linhaExistente = document.querySelector(`tr[data-codigo="${codigoDosProdutos}"]`)
 
-        if (produtos[codigo]){
-            //Criando
-            const tr = document.createElement("tr")
-            const thPro = document.createElement("th")
-            thPro.textContent = `${produtos[codigo].nome}`
-            const thQTD = document.createElement("th")
-            thQTD.textContent = `${QTDdosprodutos}`
-            const thPre = document.createElement("th")
-            thPre.textContent = `R$${produtos[codigo].preco}`
-            const thSub = document.createElement("th")
-            const Subtotal = produtos[codigo].preco * qtd
-            thSub.textContent = `R$${Subtotal}`
-
-            //Posicionando
-            tabela.appendChild(tr)
-            tr.appendChild(thPro)
-            tr.appendChild(thQTD)
-            tr.appendChild(thPre)
-            tr.appendChild(thSub)
-        }else{
-            alert("este código não está registrado no sistema")
+        if (linhaExistente) {
+            const quantidade = Number(QTDdosprodutos)
+            const QTDNova = Number(linhaExistente.children[1].textContent)
+            const resultado = QTDNova + quantidade
+            const thQTD = linhaExistente.children[1]
+            thQTD.textContent = `${resultado}`
+            const thSub = linhaExistente.children[3]
+            const Sub = resultado * produtos[codigoDosProdutos].preco
+            thSub.textContent = `R$${Sub}`
+        } else {
+            criarLinha(codigoDosProdutos, produtos[codigoDosProdutos].nome, Number(QTDdosprodutos), produtos[codigoDosProdutos].preco)
         }
-    }
+    }else{ 
+        alert("Código não detectado") 
+    }} 
+    //Verificar repetição  
 })
