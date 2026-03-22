@@ -70,7 +70,6 @@ function criarLinha(codigo, nome, quantidade, preco) {
 //Verificação/criação 
 const BTNAdicionar = document.getElementById("BNTadcionar") 
 BTNAdicionar.addEventListener("click", () => { 
-
     //Valores 
     const codigoDosProdutos = document.getElementById("códigoDoproduto").value 
     const QTDdosprodutos = document.getElementById("QTDDoproduto").value 
@@ -101,5 +100,19 @@ BTNAdicionar.addEventListener("click", () => {
     }else{ 
         alert("Código não detectado") 
     }} 
-    //Verificar repetição  
+    atualizarTotalGeral()
 })
+
+function atualizarTotalGeral (){
+    const totalT = document.getElementById("Total")
+    const todosOsDatas = document.querySelectorAll(`tr[data-codigo]`)
+    let total = 0 
+    todosOsDatas.forEach((linha) => {
+        let Subs =  linha.children[3].textContent
+        Subs = Subs.replace("R$", "")
+        Subs = Number(Subs)
+        total += Subs
+
+        totalT.textContent = `R$ ${total}` 
+    })
+} 
