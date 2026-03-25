@@ -57,12 +57,25 @@ function criarLinha(codigo, nome, quantidade, preco) {
     const subtotal = preco * quantidade;
     thSub.textContent = `R$${subtotal}`;
 
+    const imgApagar = document.createElement("img")
+    imgApagar.src = "img/Apagar.png"
+    const BNTApagar = document.createElement("button")
+    BNTApagar.classList.add("BMTApagar")
+
+    BNTApagar.appendChild(imgApagar);
     tr.appendChild(thPro);
     tr.appendChild(thQTD);
     tr.appendChild(thPre);
     tr.appendChild(thSub);
+    tr.appendChild(BNTApagar)
 
     tabela.appendChild(tr);
+
+    //Apagar um item 
+    BNTApagar.addEventListener("click", () => {
+    tr.remove()
+    atualizarTotalGeral()
+    })
 
     return(tr)
 }
@@ -112,7 +125,23 @@ function atualizarTotalGeral (){
         Subs = Subs.replace("R$", "")
         Subs = Number(Subs)
         total += Subs
-
-        totalT.textContent = `R$ ${total}` 
     })
+    totalT.textContent = `R$ ${total}` 
 } 
+
+//Remover todas as compras
+const BNTRemover = document.getElementById("BNTRemover")
+
+BNTRemover.addEventListener("click", () => {
+    const simOuNao = confirm("Você tem certeza?")
+    if (simOuNao == true){
+        const TRs = document.querySelectorAll((`tr[data-codigo]`))
+        TRs.forEach(el => el.remove());
+        atualizarTotalGeral()
+        document.getElementById("códigoDoproduto").value = ""
+        document.getElementById("QTDDoproduto").value = ""
+        return
+    }else{
+        alert("Ok")
+    }
+})

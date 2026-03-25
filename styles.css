@@ -181,6 +181,16 @@ img {
     width: 770px;
 }
 
+.BMTApagar {
+    background: none;
+    border: none;
+}
+
+.BMTApagar:hover {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
 #Table2 {
     padding: 15px;
     border-collapse: collapse;
