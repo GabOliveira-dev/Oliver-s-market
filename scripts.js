@@ -1,4 +1,5 @@
 //globais
+let descontoAtual = 0
 
 //códigos dos produtos
 const produtos = {
@@ -126,7 +127,9 @@ function atualizarTotalGeral (){
         Subs = Number(Subs)
         total += Subs
     })
-    totalT.textContent = `R$ ${total}` 
+    final = total - descontoAtual
+    totalT.textContent = `R$ ${final}` 
+    return total
 } 
 
 //Remover todas as compras
@@ -143,5 +146,33 @@ BNTRemover.addEventListener("click", () => {
         return
     }else{
         alert("Ok")
+    }
+})
+
+//Desconto
+const desconto = document.getElementById("BNTdesconto")
+desconto.addEventListener("click", () => {
+    const Tdesconto = document.getElementById("DescontoV")
+
+    const porcentagem = prompt("De quanto vai ser o desconto?")
+    console.log(porcentagem)
+    if (porcentagem === null) {
+        return
+    }else{
+        if (porcentagem.trim() === ""){
+            alert("Coloque o desconto")
+        }else if (Number.isNaN(Number(porcentagem))){
+            alert("Desconto inválido")
+            return
+        } else {
+            const Nporcentagem = Number(porcentagem)
+            const Tporcentagem = Nporcentagem / 100
+            const totalF = atualizarTotalGeral()
+            let resultado = totalF * Tporcentagem
+            resultado = Math.round(resultado * 100) / 100
+            descontoAtual = resultado
+            atualizarTotalGeral()
+            Tdesconto.textContent = `R$${resultado}`    
+        }
     }
 })

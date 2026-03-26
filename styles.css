@@ -234,13 +234,39 @@ img {
     background-color: #eeeeee;
 }
 
-#BTNcompletarCompra {
+#BNTdesconto{
     border-radius: 5px;
     height: 35px;
-    width: 550px;
+    width: 600px;
     font-family: var(--font-family);
     background-color: var(--color);
     border-color: var(--color);
+    color: var(--secundary-text-color);
+    margin-top: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#BTNcompletarCompra {
+    border-radius: 5px;
+    height: 35px;
+    width: 295px;
+    font-family: var(--font-family);
+    background-color: var(--color);
+    border-color: var(--color);
+    color: var(--secundary-text-color);
+    margin-top: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#BNTRemover {
+    border-radius: 5px;
+    height: 35px;
+    width: 295px;
+    font-family: var(--font-family);
+    background-color: red;
+    border-color: red;
     color: var(--secundary-text-color);
     margin-top: 12px;
     cursor: pointer;
@@ -256,7 +282,7 @@ img {
     align-items: center;
     gap: 10px;
     height: 80px;
-    gap: 100px;
+    gap: 280px;
 }
 
 #BarraInferior img {
