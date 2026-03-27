@@ -118,17 +118,26 @@ BTNAdicionar.addEventListener("click", () => {
 })
 
 function atualizarTotalGeral (){
+    const Tdesconto = document.getElementById("DescontoV")
     const totalT = document.getElementById("Total")
     const todosOsDatas = document.querySelectorAll(`tr[data-codigo]`)
     let total = 0 
+    let final = 0
     todosOsDatas.forEach((linha) => {
         let Subs =  linha.children[3].textContent
+        console.log(linha.children)
         Subs = Subs.replace("R$", "")
         Subs = Number(Subs)
         total += Subs
     })
-    final = total - descontoAtual
-    totalT.textContent = `R$ ${final}` 
+    if(total < descontoAtual){
+        descontoAtual = total
+        final = total - descontoAtual
+    }else{
+        final = total - descontoAtual
+    }
+    Tdesconto.textContent = `R$${descontoAtual}`
+    totalT.textContent = `R$ ${final}`
     return total
 } 
 
