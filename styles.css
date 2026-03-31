@@ -20,7 +20,7 @@ body{
     color: var(--principal-text-color);
 }
 
-ul {
+#BarraSuperior ul {
     display: flex;
     list-style: none;
     gap: 20px;
@@ -283,8 +283,137 @@ img {
     gap: 10px;
     height: 80px;
     gap: 280px;
+    list-style: none;
+    background-color: var(--color);
+    height: 70px;
+    padding: 15px 0px;
+    color: var(--secundary-text-color);
 }
 
 #BarraInferior img {
     width: 40px;
+}
+
+.overlay {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;    
+    height: 100vh;   
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 9999;   
+}
+
+.overlay.ativo {
+    visibility: visible;
+}
+
+.comprovante {
+    visibility: hidden;
+    background-color:  #bb9469;
+    border-radius: 10px;
+    height: 700px;
+    width: 700px;
+    padding: 25px 25px;
+}
+
+.comprovante.ativo{
+    visibility: visible;
+}
+
+.comprovante hr {
+    border: 0;
+    border-top: 2px solid #000000; 
+    width: 100%;                
+    margin: 20px auto;         
+}
+
+.comprovante ol {
+    list-style: none;
+}
+
+#TableComprovante {
+    border-collapse: collapse;
+    width: 87%;   
+    background-color: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+#TableComprovante thead {
+    background-color: #9a7956;
+    color: white;
+}
+
+#TableComprovante th,
+#TableComprovante td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #bb9469;
+}
+
+#TableComprovante th {
+    text-align: left;
+}
+
+.scroll-tabela-comprovante { 
+    max-height: 300px;
+    overflow-y: auto;
+    width: 770px;
+}
+
+#tabelaComprovante2 {
+    padding: 15px 15px;
+    border-collapse: collapse;
+    width: 100%;   
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+#tabelaComprovante2 thead {
+    background-color: #9a7956;
+    color: var(--secundary-text-color);
+}
+
+#tabelaComprovante2 thead {
+    display: table-header-group;
+    width: 100%;
+}
+
+#tabelaComprovante2 thead tr {
+    width: 100%;
+}
+
+#tabelaComprovante2 th,
+#tabelaComprovante2 td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+#tabelaComprovante2 th {
+    text-align: left;
+}
+
+.comprovante button{
+    background-color: #9a7956;
+    border-radius: 10px;
+    height: 35px;
+    width: 100%;
+    gap: 20px;
+    font-family: var(--font-family);
+    color: var(--secundary-text-color);
+    margin-top: 10px;
+}
+
+.comprovante button:hover {
+    background-color: #bb9469;
+    cursor: pointer;
 }

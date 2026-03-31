@@ -154,7 +154,7 @@ BNTRemover.addEventListener("click", () => {
         document.getElementById("QTDDoproduto").value = ""
         return
     }else{
-        alert("Ok")
+        return
     }
 })
 
@@ -183,5 +183,22 @@ desconto.addEventListener("click", () => {
             atualizarTotalGeral()
             Tdesconto.textContent = `R$${resultado}`    
         }
+    }
+})
+
+const completarCompra = document.getElementById("BTNcompletarCompra")
+completarCompra.addEventListener("click", () => {
+    document.querySelector(".overlay").classList.add("ativo")
+    document.querySelector(".comprovante").classList.add("ativo")
+})
+
+const overlay = document.querySelector(".overlay")
+overlay.addEventListener("click", (event) => {
+    if(event.target === overlay){
+        document.querySelector(".overlay").classList.remove("ativo")
+        document.querySelector(".comprovante").classList.remove("ativo")
+        return
+    }else{
+        return
     }
 })
