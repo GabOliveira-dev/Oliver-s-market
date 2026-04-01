@@ -190,6 +190,7 @@ const completarCompra = document.getElementById("BTNcompletarCompra")
 completarCompra.addEventListener("click", () => {
     document.querySelector(".overlay").classList.add("ativo")
     document.querySelector(".comprovante").classList.add("ativo")
+    gerarComprovante()
 })
 
 const overlay = document.querySelector(".overlay")
@@ -202,3 +203,40 @@ overlay.addEventListener("click", (event) => {
         return
     }
 })
+
+function gerarComprovante (){
+    const total = document.getElementById("Total").textContent
+    const Desconto = document.getElementById("DescontoV").textContent
+    console.log(total, Desconto)
+    const TRs = document.querySelectorAll((`tr[data-codigo]`))
+    const tabelaComprovante = document.getElementById("tabelaComprovante")
+   tabelaComprovante.innerHTML = ""
+
+    TRs.forEach((linha) => {
+        const produto = linha.children[0].textContent
+        const QTD = linha.children[1].textContent
+        const preço = linha.children[2].textContent
+        const subtotal = linha.children[3].textContent    
+
+        const tr = document.createElement("tr")
+        const tdPro = document.createElement("td");
+        tdPro.textContent = produto;
+
+        const tdQTD = document.createElement("td");
+        tdQTD.textContent = QTD;
+
+        const tdPre = document.createElement("td");
+        tdPre.textContent = preço;
+
+        const tdSub = document.createElement("td");
+        tdSub.textContent = subtotal;
+
+        tabelaComprovante.appendChild(tr)
+        tr.appendChild(tdPro)
+        tr.appendChild(tdQTD)
+        tr.appendChild(tdPre)
+        tr.appendChild(tdSub)
+    })
+    document.getElementById("TotalV").textContent = `${total}`
+        document.getElementById("Desconto").textContent = `${Desconto}`
+}

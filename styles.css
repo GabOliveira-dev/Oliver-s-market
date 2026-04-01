@@ -1,8 +1,8 @@
 :root {
     --secundary-background-color: rgb(200, 200, 200);
     --primary-background-color: white;
-    --color: rgb(4, 190, 4);
-    --primary-color-hover: rgb(0, 200, 0);
+    --color: #bb9469;
+    --primary-color-hover: #9a7956;
     --principal-text-color: black;
     --secundary-text-color: white;
     --font-family: 'Montserrat', sans-serif;
@@ -361,10 +361,10 @@ img {
     text-align: left;
 }
 
-.scroll-tabela-comprovante { 
-    max-height: 300px;
+.scroll-tabela { 
+    max-height: 450px;
     overflow-y: auto;
-    width: 770px;
+    width: 750px;
 }
 
 #tabelaComprovante2 {
