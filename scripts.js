@@ -1,5 +1,8 @@
 //globais
 let descontoAtual = 0
+let Pcarrinho = []
+
+carregarCarrinho()
 
 //códigos dos produtos
 const produtos = {
@@ -74,7 +77,19 @@ function criarLinha(codigo, nome, quantidade, preco) {
 
     //Apagar um item 
     BNTApagar.addEventListener("click", () => {
+    // pegar o código da linha
+    const codigo = Number(tr.getAttribute("data-codigo"))
+
+    // remover do array
+    Pcarrinho = Pcarrinho.filter(item => item.codigo !== codigo)
+
+    // atualizar localStorage
+    localStorage.setItem("carrinho", JSON.stringify(Pcarrinho))
+
+    // remover da tela
     tr.remove()
+
+    // atualizar total
     atualizarTotalGeral()
     })
 
@@ -110,6 +125,7 @@ BTNAdicionar.addEventListener("click", () => {
             thSub.textContent = `R$${Sub}`
         } else {
             criarLinha(codigoDosProdutos, produtos[codigoDosProdutos].nome, Number(QTDdosprodutos), produtos[codigoDosProdutos].preco)
+            carrinho()
         }
     }else{ 
         alert("Código não detectado") 
@@ -152,6 +168,8 @@ BNTRemover.addEventListener("click", () => {
         atualizarTotalGeral()
         document.getElementById("códigoDoproduto").value = ""
         document.getElementById("QTDDoproduto").value = ""
+        Pcarrinho = []
+        localStorage.setItem("carrinho", JSON.stringify(Pcarrinho))
         return
     }else{
         return
@@ -239,4 +257,39 @@ function gerarComprovante (){
     })
     document.getElementById("TotalV").textContent = `${total}`
         document.getElementById("Desconto").textContent = `${Desconto}`
+}
+
+function carrinho (){
+    const codigoDosProdutos = document.getElementById("códigoDoproduto").value 
+    const QTDdosprodutos = document.getElementById("QTDDoproduto").value 
+
+    if(!produtos[codigoDosProdutos]){
+        console.error("Produto não existe")
+        return
+    }else{
+        const codigo = Number(codigoDosProdutos) 
+        const nome = produtos[codigoDosProdutos].nome 
+        const QTD = Number(QTDdosprodutos) 
+        const preco = Number(produtos[codigoDosProdutos].preco)
+        let elementos = {
+            codigo:codigo, nome:nome, qtd:QTD, preco:preco
+        }
+        Pcarrinho.push(elementos)
+        let PcarrinhoC = JSON.stringify(Pcarrinho)
+        localStorage.setItem("carrinho", PcarrinhoC)
+    }
+}
+
+function carregarCarrinho (){
+    let elementoDoLocalStorage = localStorage.getItem("carrinho")
+    if (elementoDoLocalStorage){
+        elementoDoLocalStorage = JSON.parse(elementoDoLocalStorage)
+        Pcarrinho = elementoDoLocalStorage
+        Pcarrinho.forEach((item) => {
+            criarLinha(item.codigo, item.nome, item.qtd, item.preco)
+            atualizarTotalGeral()
+        })
+    }else{
+        console.error("Não tem nada")
+    }
 }
