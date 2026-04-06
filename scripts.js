@@ -212,13 +212,14 @@ completarCompra.addEventListener("click", () => {
 })
 
 const overlay = document.querySelector(".overlay")
+
 overlay.addEventListener("click", (event) => {
-    if(event.target === overlay){
-        document.querySelector(".overlay").classList.remove("ativo")
-        document.querySelector(".comprovante").classList.remove("ativo")
-        return
-    }else{
-        return
+    if (event.target === overlay) {
+        const ativos = document.querySelectorAll(".ativo")
+
+        ativos.forEach(ativo => {
+            ativo.classList.remove("ativo")
+        })
     }
 })
 
@@ -293,3 +294,32 @@ function carregarCarrinho (){
         console.error("Não tem nada")
     }
 }
+
+//Botão checar preço
+const BNTchecarPreço = document.getElementById("BNT-ChecarPreço")
+
+BNTchecarPreço.addEventListener("click", () => {
+    overlay.classList.add("ativo")
+    document.querySelector(".ChecarPreco").classList.add("ativo")
+})
+
+const BNTBuscar = document.getElementById("buscar")
+BNTBuscar.addEventListener("click", () => {
+    const codigo = Number(document.getElementById("INPcode").value)
+    const produto = produtos[codigo]
+    if (produto){
+        const item = document.querySelector(".ChecarPreco")
+        const resultado = document.getElementById("resultado")
+        resultado.innerHTML = ""
+
+        const preco = produto.preco
+        const nome = produto.nome
+        
+        const Pproduto = document.createElement("p")
+        Pproduto.textContent = `O produto ${nome} tem o valor de R$${preco}`
+
+        resultado.appendChild(Pproduto)
+    }else{
+        console.error("Produto não encontrado.")
+    }
+})

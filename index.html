@@ -100,7 +100,7 @@
                 <img src="img/Carta.png" alt="">
                 <span>Remover item</span>
             </li>
-            <li class="menu-item">
+            <li class="menu-item" id="BNT-ChecarPreço">
                 <img src="img/Moeda.png" alt="">
                 <span>Checar o preço</span>
             </li>
@@ -164,6 +164,25 @@
                     <button>Terminar venda</button>
                 </li>
             </ol>
+        </div>
+        <div class="overlay">
+            <div class="ChecarPreco">
+                <ol>
+                    <li>
+                        <h1>Oliver’s Market</h1>
+                    </li>
+                    <li>
+                        <span>Coloque o código do produto abaixo</span>
+                    </li>
+                    <li>
+                        <input id="INPcode" type="number" min="100" max="130">
+                        <button id="buscar">buscar</button>
+                    </li>
+                    <li>
+                        <p id="resultado"></p>
+                    </li>
+            </ol>
+            </div>
         </div>
     </div>
     </aside>
