@@ -234,6 +234,14 @@ img {
     background-color: #eeeeee;
 }
 
+#INPPagar {
+    border-radius: 5px;
+    padding: 5px 5px;
+    width: 600px;
+    height: 35px;
+    font-family: var(--font-family);
+}
+
 #BNTdesconto{
     border-radius: 5px;
     height: 35px;

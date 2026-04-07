@@ -226,7 +226,6 @@ overlay.addEventListener("click", (event) => {
 function gerarComprovante (){
     const total = document.getElementById("Total").textContent
     const Desconto = document.getElementById("DescontoV").textContent
-    console.log(total, Desconto)
     const TRs = document.querySelectorAll((`tr[data-codigo]`))
     const tabelaComprovante = document.getElementById("tabelaComprovante")
    tabelaComprovante.innerHTML = ""
@@ -321,5 +320,27 @@ BNTBuscar.addEventListener("click", () => {
         resultado.appendChild(Pproduto)
     }else{
         console.error("Produto não encontrado.")
+    }
+})
+
+//Botão pagar
+const BNTPagar = document.getElementById("INPPagar")
+BNTPagar.addEventListener("keydown", (event) => {
+    if (event.key === "Enter"){
+        const valorDoPagamento = Number(document.getElementById("INPPagar").value)
+        let total = document.getElementById("Total").textContent
+        total = Number(total.replace("R$", "").trim()); 
+        console.log(total)
+        if (total > valorDoPagamento){
+            const resultado1 = total - valorDoPagamento
+            alert(`falta ${resultado1}R$ a ser pago`)
+            return
+        }else if (valorDoPagamento > total){
+            const resultado2 = valorDoPagamento - total
+            const tdTroco = document.getElementById("troco")
+            tdTroco.textContent = `R$${resultado2}`
+        }
+        const tdPago = document.getElementById("Pago")
+        tdPago.textContent = `R$${valorDoPagamento}`
     }
 })
