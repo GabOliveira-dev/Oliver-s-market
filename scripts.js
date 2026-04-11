@@ -141,7 +141,6 @@ function atualizarTotalGeral (){
     let final = 0
     todosOsDatas.forEach((linha) => {
         let Subs =  linha.children[3].textContent
-        console.log(linha.children)
         Subs = Subs.replace("R$", "")
         Subs = Number(Subs)
         total += Subs
@@ -327,20 +326,62 @@ BNTBuscar.addEventListener("click", () => {
 const BNTPagar = document.getElementById("INPPagar")
 BNTPagar.addEventListener("keydown", (event) => {
     if (event.key === "Enter"){
+        const tdTroco = document.getElementById("troco")
+        const textTroco = document.getElementById("Troco/Falta")
         const valorDoPagamento = Number(document.getElementById("INPPagar").value)
         let total = document.getElementById("Total").textContent
         total = Number(total.replace("R$", "").trim()); 
-        console.log(total)
         if (total > valorDoPagamento){
             const resultado1 = total - valorDoPagamento
-            alert(`falta ${resultado1}R$ a ser pago`)
+            tdTroco.textContent = (`R$${resultado1}`)
+            textTroco.textContent = (`Falta:`)
+            textTroco.style.color = "red"
             return
         }else if (valorDoPagamento > total){
             const resultado2 = valorDoPagamento - total
-            const tdTroco = document.getElementById("troco")
             tdTroco.textContent = `R$${resultado2}`
+            textTroco.textContent = (`Troco:`)
+            textTroco.style.color = "green"
+        }else {
+            tdTroco.textContent = `R$0`
+            textTroco.textContent = (`Troco/Falta:`)
+            textTroco.style.color = "black"
         }
         const tdPago = document.getElementById("Pago")
         tdPago.textContent = `R$${valorDoPagamento}`
+    }
+})
+
+//BNTTerminarVenda
+const BNTTerminarVenda = document.getElementById("terminarVenda")
+
+BNTTerminarVenda.addEventListener("click", () => {
+    const valorDoPagamento = Number(document.getElementById("INPPagar").value)
+    let total = document.getElementById("Total").textContent
+    total = Number(total.replace("R$", "").trim()); 
+    if (total > valorDoPagamento){
+        alert("Não é permitido finalizar a compra agora, tem falta saldo a ser pago")
+        console.error("Não é permitido finalizar a compra agora, tem falta saldo a ser pago")
+        return
+    }else if (valorDoPagamento > total){
+        console.error("Não é permitido finalizar a compra agora, Tem troco a ser pago")
+        alert("Não é permitido finalizar a compra agora, Tem troco a ser pago")
+        return
+    }else {
+        console.log("Tudo certo")
+        overlay.classList.add("ativo")
+        document.querySelector(".Terminar-Venda").classList.add("ativo")
+        setTimeout(() => {
+            const TRs = document.querySelectorAll((`tr[data-codigo]`))
+            TRs.forEach(el => el.remove());
+            atualizarTotalGeral()
+            document.getElementById("códigoDoproduto").value = ""
+            document.getElementById("QTDDoproduto").value = ""
+            Pcarrinho = []
+            localStorage.setItem("carrinho", JSON.stringify(Pcarrinho))
+            document.getElementById("Pago").textContent = "R$0"
+            document.getElementById("INPPagar").value = ""
+        },5000)
+        return
     }
 })

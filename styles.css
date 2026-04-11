@@ -464,3 +464,20 @@ img {
 .ChecarPreco.ativo {
     visibility: visible;
 }
+
+.Terminar-Venda {
+    visibility: hidden;
+    background-color:  #bb9469;
+    border-radius: 10px;
+    height: 700px;
+    width: 700px;
+    padding: 25px 25px;
+}
+
+.Terminar-Venda ol {
+    list-style: none;
+}
+
+.Terminar-Venda.ativo {
+    visibility: visible;
+}
