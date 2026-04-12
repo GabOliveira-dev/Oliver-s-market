@@ -21,10 +21,9 @@ body{
 }
 
 #BarraSuperior ul {
-    position: fixed;
     display: flex;
     list-style: none;
-    gap: 10px;
+    gap: 15px;
     background-color: var(--color);
     height: 70px;
     padding: 15px 0px;
@@ -32,6 +31,7 @@ body{
 }
 
 #barra-superior {
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-between;
