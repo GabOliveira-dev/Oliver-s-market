@@ -20,6 +20,10 @@ body{
     color: var(--principal-text-color);
 }
 
+#BarraSuperior {
+    width: 100%;
+}
+
 #BarraSuperior ul {
     display: flex;
     list-style: none;
