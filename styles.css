@@ -98,9 +98,9 @@ img {
     min-width: max-content;
 }
 
-.menu-direita {
-    display: flex;
-    margin-left: 650px;
+.menu-direita { 
+    margin-left: 0;
+    justify-content: center;
 }
 
 .menu-item:hover {
@@ -153,6 +153,15 @@ img {
     display: flex;
     align-items: flex-start;
     gap: 65px;
+}
+
+@media (max-width: 768px) {
+
+    #asDuasBarras {
+        flex-direction: column; /* ESSENCIAL */
+        gap: 20px;
+    }
+
 }
 
 .Direita {
