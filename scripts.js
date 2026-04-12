@@ -123,6 +123,8 @@ BTNAdicionar.addEventListener("click", () => {
             const thSub = linhaExistente.children[3]
             const Sub = resultado * produtos[codigoDosProdutos].preco
             thSub.textContent = `R$${Sub}`
+            document.getElementById("códigoDoproduto").value = ""
+            document.getElementById("QTDDoproduto").value = ""
         } else {
             criarLinha(codigoDosProdutos, produtos[codigoDosProdutos].nome, Number(QTDdosprodutos), produtos[codigoDosProdutos].preco)
             carrinho()
@@ -315,6 +317,7 @@ BNTBuscar.addEventListener("click", () => {
         
         const Pproduto = document.createElement("p")
         Pproduto.textContent = `O produto ${nome} tem o valor de R$${preco}`
+        document.getElementById("INPcode").value = ""
 
         resultado.appendChild(Pproduto)
     }else{
@@ -329,6 +332,7 @@ BNTPagar.addEventListener("keydown", (event) => {
         const tdTroco = document.getElementById("troco")
         const textTroco = document.getElementById("Troco/Falta")
         const valorDoPagamento = Number(document.getElementById("INPPagar").value)
+        document.getElementById("INPPagar").value = ""
         let total = document.getElementById("Total").textContent
         total = Number(total.replace("R$", "").trim()); 
         if (total > valorDoPagamento){
@@ -381,7 +385,19 @@ BNTTerminarVenda.addEventListener("click", () => {
             localStorage.setItem("carrinho", JSON.stringify(Pcarrinho))
             document.getElementById("Pago").textContent = "R$0"
             document.getElementById("INPPagar").value = ""
-        },5000)
+            overlay.classList.remove("ativo")
+            document.querySelector(".Terminar-Venda").classList.remove("ativo")
+            document.querySelector(".comprovante").classList.remove("ativo")
+        },2000)
         return
     }
 })
+
+const construcao = document.querySelectorAll(".construção")
+
+construcao.forEach((elemento) => {
+  elemento.addEventListener('click', () => {
+    console.log('🚧 Em desenvolvimento');
+    alert("🚧 Em desenvolvimento")
+  });
+});

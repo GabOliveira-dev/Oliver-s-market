@@ -430,7 +430,7 @@ img {
     visibility: hidden;
     background-color:  #bb9469;
     border-radius: 10px;
-    height: 700px;
+    height: 400px;
     width: 700px;
     padding: 25px 25px;
 }
@@ -472,6 +472,12 @@ img {
     height: 700px;
     width: 700px;
     padding: 25px 25px;
+}
+
+.Terminar-Venda span {
+    justify-content: center; 
+    align-items: center;
+    display: flex;
 }
 
 .Terminar-Venda ol {
