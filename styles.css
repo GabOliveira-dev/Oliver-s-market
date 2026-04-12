@@ -45,6 +45,25 @@ body{
     color: var(--secundary-text-color);
 }
 
+@media (max-width: 768px) {
+
+    #BarraSuperior ul {
+        flex-direction: column; /* vira vertical */
+        align-items: center; /* centraliza */
+        gap: 10px;
+        height: auto; /* deixa crescer */
+        padding: 10px;
+    }
+
+    #barra-superior {
+        flex-direction: column; /* empilha */
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+}
+
 li div {
     display: flex;
     align-items: center;
