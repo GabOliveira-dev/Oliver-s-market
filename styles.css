@@ -24,6 +24,7 @@ body{
     display: flex;
     list-style: none;
     gap: 15px;
+    width: 100%;
 }
 
 #barra-superior {
@@ -36,9 +37,18 @@ body{
     justify-content: space-between;
     height: 80px;
     padding: 0px 20px;
+    flex-direction: column; /* IMPORTANTE */
+    width: 100%;
+
 
     background-color: var(--color);
     color: var(--secundary-text-color);
+}
+
+@media (max-width: 768px) {
+    .menu-item {
+        min-width: unset;
+    }
 }
 
 @media (max-width: 768px) {
