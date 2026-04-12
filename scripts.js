@@ -357,40 +357,79 @@ BNTPagar.addEventListener("keydown", (event) => {
 })
 
 //BNTTerminarVenda
+//BNTTerminarVenda
 const BNTTerminarVenda = document.getElementById("terminarVenda")
 
-BNTTerminarVenda.addEventListener("click", () => {
-    const valorDoPagamento = Number(document.getElementById("INPPagar").value)
-    let total = document.getElementById("Total").textContent
-    total = Number(total.replace("R$", "").trim()); 
-    if (total > valorDoPagamento){
-        alert("Não é permitido finalizar a compra agora, tem falta saldo a ser pago")
-        console.error("Não é permitido finalizar a compra agora, tem falta saldo a ser pago")
-        return
-    }else if (valorDoPagamento > total){
-        console.error("Não é permitido finalizar a compra agora, Tem troco a ser pago")
-        alert("Não é permitido finalizar a compra agora, Tem troco a ser pago")
-        return
-    }else {
-        console.log("Tudo certo")
-        overlay.classList.add("ativo")
-        document.querySelector(".Terminar-Venda").classList.add("ativo")
-        setTimeout(() => {
-            const TRs = document.querySelectorAll((`tr[data-codigo]`))
-            TRs.forEach(el => el.remove());
-            atualizarTotalGeral()
-            document.getElementById("códigoDoproduto").value = ""
-            document.getElementById("QTDDoproduto").value = ""
-            Pcarrinho = []
-            localStorage.setItem("carrinho", JSON.stringify(Pcarrinho))
-            document.getElementById("Pago").textContent = "R$0"
-            document.getElementById("INPPagar").value = ""
-            overlay.classList.remove("ativo")
-            document.querySelector(".Terminar-Venda").classList.remove("ativo")
-            document.querySelector(".comprovante").classList.remove("ativo")
-        },2000)
+BNTTerminarVenda.addEventListener("click", (event) => {
+    event.preventDefault()
+    const inputRaw = document.getElementById("Pago").textContent
+
+    // ❗ validação: vazio
+    if (inputRaw === "") {
+        alert("Digite um valor para pagamento")
         return
     }
+
+    // 🔁 corrige vírgula → ponto
+    const valorDoPagamento = Number(
+    inputRaw
+        .replace("R$", "")
+        .replace(",", ".")
+        .trim()
+    )
+
+    // ❗ validação: número inválido
+    if (isNaN(valorDoPagamento)) {
+        alert("Digite um valor válido para pagamento")
+        return
+    }
+
+    let totalText = document.getElementById("Total").textContent
+
+    // 🔁 limpa e corrige o total
+    const total = Number(
+        totalText
+            .replace("R$", "")
+            .replace(",", ".")
+            .trim()
+    )
+
+    console.log("INPUT:", valorDoPagamento)
+    console.log("TOTAL:", total)
+
+    // ❗ validação de saldo
+    if (valorDoPagamento < total){
+        alert("Não é permitido finalizar a compra: saldo insuficiente")
+        console.error("Saldo insuficiente")
+        return
+    }
+
+    // ✅ sucesso
+    console.log("Tudo certo")
+
+    overlay.classList.add("ativo")
+    document.querySelector(".Terminar-Venda").classList.add("ativo")
+
+    setTimeout(() => {
+        const TRs = document.querySelectorAll(`tr[data-codigo]`)
+        TRs.forEach(el => el.remove())
+
+        atualizarTotalGeral()
+
+        document.getElementById("códigoDoproduto").value = ""
+        document.getElementById("QTDDoproduto").value = ""
+
+        Pcarrinho = []
+        localStorage.setItem("carrinho", JSON.stringify(Pcarrinho))
+
+        document.getElementById("Pago").textContent = "R$0"
+        document.getElementById("INPPagar").value = ""
+
+        overlay.classList.remove("ativo")
+        document.querySelector(".Terminar-Venda").classList.remove("ativo")
+        document.querySelector(".comprovante").classList.remove("ativo")
+
+    }, 2000)
 })
 
 const construcao = document.querySelectorAll(".construção")
