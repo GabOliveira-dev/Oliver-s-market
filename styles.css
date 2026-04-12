@@ -37,11 +37,10 @@ body{
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    flex-direction: column; /* IMPORTANTE */
     padding: 0px 20px;
     width: 100%;
 
-    background-color: red;
+    background-color: var(--color);
     color: var(--secundary-text-color);
 }
 
