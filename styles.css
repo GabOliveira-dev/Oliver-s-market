@@ -20,11 +20,8 @@ body{
     color: var(--principal-text-color);
 }
 
-#BarraSuperior {
-    width: 100%;
-}
-
 #BarraSuperior ul {
+    position: fixed;
     display: flex;
     list-style: none;
     gap: 10px;
