@@ -15,6 +15,7 @@
 }
 
 body{
+    padding-top: 80px;
     background-color: var(--secundary-background-color);
     font-family: var(--font-family);
     color: var(--principal-text-color);
@@ -36,6 +37,7 @@ body{
     align-items: center;
     justify-content: space-between;
     height: 80px;
+    flex-direction: column; /* IMPORTANTE */
     padding: 0px 20px;
     width: 100%;
 
