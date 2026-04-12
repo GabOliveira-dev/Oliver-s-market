@@ -64,6 +64,14 @@ body{
 
 }
 
+@media (max-width: 768px) {
+
+    #barra-superior {
+        position: static; /* ESSENCIAL */
+    }
+
+}
+
 li div {
     display: flex;
     align-items: center;
