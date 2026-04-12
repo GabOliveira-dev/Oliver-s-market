@@ -24,10 +24,6 @@ body{
     display: flex;
     list-style: none;
     gap: 15px;
-    background-color: var(--color);
-    height: 70px;
-    padding: 15px 0px;
-    color: var(--secundary-text-color);
 }
 
 #barra-superior {
@@ -43,6 +39,14 @@ body{
 
     background-color: var(--color);
     color: var(--secundary-text-color);
+}
+
+@media (max-width: 768px) {
+
+    #BarraSuperior ul {
+        height: auto;
+    }
+
 }
 
 @media (max-width: 768px) {
