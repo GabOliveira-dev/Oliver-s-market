@@ -27,21 +27,19 @@ body{
     width: 100%;
 }
 
-#barra-superior {
+#BarraSuperior {
     position: fixed;
+    top: 0;
     left: 0;
-    bottom: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
     padding: 0px 20px;
-    flex-direction: column; /* IMPORTANTE */
     width: 100%;
 
-
-    background-color: var(--color);
+    background-color: red;
     color: var(--secundary-text-color);
 }
 
@@ -69,7 +67,7 @@ body{
         padding: 10px;
     }
 
-    #barra-superior {
+    #BarraSuperior {
         flex-direction: column; /* empilha */
         height: auto;
         padding: 10px;
@@ -80,7 +78,7 @@ body{
 
 @media (max-width: 768px) {
 
-    #barra-superior {
+    #BarraSuperior {
         position: static; /* ESSENCIAL */
     }
 
