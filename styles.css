@@ -358,15 +358,18 @@ img {
 .overlay {
     visibility: hidden;
     padding: 10px;
+
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+
     position: fixed; 
     top: 0;
     left: 0;
+
     width: 100vw;    
-    height: 100vh;   
+    height: 100dvh;  /* 🔥 aqui está a correção */
+
     background-color: rgba(0, 0, 0, 0.6); 
     z-index: 9999;   
 }
