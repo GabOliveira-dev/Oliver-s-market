@@ -359,7 +359,6 @@ img {
     display: none;
     padding: 10px;
 
-    display: flex;
     justify-content: center;
     align-items: center;
 
@@ -375,7 +374,7 @@ img {
 }
 
 .overlay.ativo {
-    display: ativo;
+    display: flex;
 }
 
 .comprovante,
@@ -391,7 +390,6 @@ img {
 }
 
 .comprovante {
-    visibility: hidden;
     background-color: #bb9469;
     border-radius: 10px;
 
@@ -402,10 +400,6 @@ img {
     overflow: auto;
 
     padding: 25px;
-}
-
-.comprovante.ativo{
-    visibility: visible;
 }
 
 .comprovante hr {
@@ -501,7 +495,6 @@ img {
 }
 
 .ChecarPreco {
-    visibility: hidden;
     background-color: #bb9469;
     border-radius: 10px;
 
@@ -540,10 +533,6 @@ img {
     border-radius: 10px;
 }
 
-.ChecarPreco.ativo {
-    visibility: visible;
-}
-
 .Terminar-Venda {
     background-color: #bb9469;
     border-radius: 10px;
@@ -565,8 +554,4 @@ img {
 
 .Terminar-Venda ol {
     list-style: none;
-}
-
-.Terminar-Venda.ativo {
-    visibility: visible;
 }
