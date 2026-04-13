@@ -356,7 +356,6 @@ img {
 }
 
 .overlay {
-    .overlay {
     display: none;
 
     position: fixed; 
@@ -369,14 +368,12 @@ img {
     background-color: rgba(0, 0, 0, 0.6); 
     z-index: 9999;
 
-    display: flex;
     justify-content: center;
     
     align-items: flex-start; /* 🔥 muda isso */
     padding: 20px 10px;
 
     overflow: auto; /* 🔥 MUITO IMPORTANTE */
-}  
 }
 
 .overlay.ativo {
