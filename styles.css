@@ -356,7 +356,7 @@ img {
 }
 
 .overlay {
-    visibility: hidden;
+    display: none;
     padding: 10px;
 
     display: flex;
@@ -375,7 +375,19 @@ img {
 }
 
 .overlay.ativo {
-    visibility: visible;
+    display: ativo;
+}
+
+.comprovante,
+.ChecarPreco,
+.Terminar-Venda {
+    display: none;
+}
+
+.comprovante.ativo,
+.ChecarPreco.ativo,
+.Terminar-Venda.ativo {
+    display: block;
 }
 
 .comprovante {
