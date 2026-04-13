@@ -434,7 +434,7 @@ img {
 .scroll-tabela { 
     max-height: 450px;
     overflow-y: auto;
-    width: 750px;
+    width: 100%;
 }
 
 #tabelaComprovante2 {
