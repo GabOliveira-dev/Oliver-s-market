@@ -216,11 +216,13 @@ const overlay = document.querySelector(".overlay")
 
 overlay.addEventListener("click", (event) => {
     if (event.target === overlay) {
-        const ativos = document.querySelectorAll(".ativo")
+        overlay.classList.remove("ativo")
+        
+        console.log("olá")
 
-        ativos.forEach(ativo => {
-            ativo.classList.remove("ativo")
-        })
+    document.querySelector(".comprovante").classList.remove("ativo")
+    document.querySelector(".ChecarPreco").classList.remove("ativo")
+    document.querySelector(".Terminar-Venda").classList.remove("ativo")
     }
 })
 
@@ -299,6 +301,7 @@ function carregarCarrinho (){
 const BNTchecarPreço = document.getElementById("BNT-ChecarPreço")
 
 BNTchecarPreço.addEventListener("click", () => {
+    console.log("CLIQUE FUNCIONOU")
     overlay.classList.add("ativo")
     document.querySelector(".ChecarPreco").classList.add("ativo")
 })
