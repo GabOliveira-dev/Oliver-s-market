@@ -207,8 +207,7 @@ desconto.addEventListener("click", () => {
 
 const completarCompra = document.getElementById("BTNcompletarCompra")
 completarCompra.addEventListener("click", () => {
-    document.querySelector(".overlay").classList.add("ativo")
-    document.querySelector(".comprovante").classList.add("ativo")
+    mostrarTela(".comprovante")
     gerarComprovante()
 })
 
@@ -217,12 +216,10 @@ const overlay = document.querySelector(".overlay")
 overlay.addEventListener("click", (event) => {
     if (event.target === overlay) {
         overlay.classList.remove("ativo")
-        
-        console.log("olá")
 
-    document.querySelector(".comprovante").classList.remove("ativo")
-    document.querySelector(".ChecarPreco").classList.remove("ativo")
-    document.querySelector(".Terminar-Venda").classList.remove("ativo")
+        telas.forEach(tela => tela.classList.remove("ativo"))
+
+        console.log("overlay fechado")
     }
 })
 
@@ -301,9 +298,7 @@ function carregarCarrinho (){
 const BNTchecarPreço = document.getElementById("BNT-ChecarPreço")
 
 BNTchecarPreço.addEventListener("click", () => {
-    console.log("CLIQUE FUNCIONOU")
-    overlay.classList.add("ativo")
-    document.querySelector(".ChecarPreco").classList.add("ativo")
+    mostrarTela(".Checar-Preco")
 })
 
 const BNTBuscar = document.getElementById("buscar")
@@ -397,9 +392,6 @@ BNTTerminarVenda.addEventListener("click", (event) => {
             .trim()
     )
 
-    console.log("INPUT:", valorDoPagamento)
-    console.log("TOTAL:", total)
-
     // ❗ validação de saldo
     if (valorDoPagamento < total){
         alert("Não é permitido finalizar a compra: saldo insuficiente")
@@ -410,8 +402,7 @@ BNTTerminarVenda.addEventListener("click", (event) => {
     // ✅ sucesso
     console.log("Tudo certo")
 
-    overlay.classList.add("ativo")
-    document.querySelector(".Terminar-Venda").classList.add("ativo")
+    mostrarTela(".terminar-venda")
 
     setTimeout(() => {
         const TRs = document.querySelectorAll(`tr[data-codigo]`)
@@ -428,12 +419,43 @@ BNTTerminarVenda.addEventListener("click", (event) => {
         document.getElementById("Pago").textContent = "R$0"
         document.getElementById("INPPagar").value = ""
 
-        overlay.classList.remove("ativo")
-        document.querySelector(".Terminar-Venda").classList.remove("ativo")
-        document.querySelector(".comprovante").classList.remove("ativo")
+        telas.forEach(tela => tela.classList.remove("ativo"))
+    overlay.classList.remove("ativo")
 
     }, 2000)
 })
+
+//Botão produtos
+const BNTProdutos = document.getElementById("BNTprodutos")
+
+BNTProdutos.addEventListener("click", () => {
+    renderizarProdutos()
+    mostrarTela(".produtos")
+})
+
+function renderizarProdutos (){
+    const table = document.getElementById("tabela-produtos")
+    table.innerHTML = ""
+    for (const [chave, nome] of Object.entries(produtos)){
+        console.table(chave, nome.nome, nome.preco)
+        
+        const nomeV = nome.nome
+        const preco = nome.preco
+
+        const tr = document.createElement("tr")
+        const tdChave = document.createElement("td")
+        tdChave.textContent = `${chave}`
+        const tdNome = document.createElement("td")
+        tdNome.textContent = `${nomeV}`
+        const tdPreco = document.createElement("td")
+        tdPreco.textContent = `R$${preco}`
+
+        table.appendChild(tr)
+        tr.appendChild(tdChave)
+        tr.appendChild(tdNome)
+        tr.appendChild(tdPreco)
+    }
+}
 
 const construcao = document.querySelectorAll(".construção")
 
@@ -443,3 +465,12 @@ construcao.forEach((elemento) => {
     alert("🚧 Em desenvolvimento")
   });
 });
+
+
+const telas = document.querySelectorAll(".tela")
+
+function mostrarTela(nomeClasse) {
+    telas.forEach(tela => tela.classList.remove("ativo"))
+    document.querySelector(nomeClasse).classList.add("ativo")
+    overlay.classList.add("ativo")
+}

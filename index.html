@@ -22,7 +22,7 @@
                 <img src="img/casa.png" alt="">
                 <span>Home</span>
             </li>
-            <li class="menu-item construção">
+            <li class="menu-item" id="BNTprodutos">
                 <img src="img/checklist.png" alt="">
                 <span>produtos</span>
             </li>
@@ -118,15 +118,14 @@
     </div>         
     </div>
     <div class="overlay">
-        <div class="comprovante">
+        <div class="tela comprovante">
             <ol>
                 <li>
                     <h1>Oliver’s Market</h1>
                 </li>
                 <li>
-                    <span>Carrinho:</span>
-                    <div class="scroll-tabela">
-                    <table id="TableComprovante">
+                    <span>Carrinho:</span>                    
+                        <table id="TableComprovante">
                         <thead>
                             <tr>
                                 <th>Produto</th>
@@ -135,10 +134,11 @@
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
+                    <div class="scroll-tabela">
                         <tbody id="tabelaComprovante">  
                         </tbody>
-                    </table>
-                </div>
+                    </div>
+                    </table>                
                 </li>
                 <li>
                     <hr>
@@ -171,7 +171,7 @@
                 </li>
             </ol>
         </div>
-            <div class="Terminar-Venda">
+            <div class="tela Terminar-Venda">
                 <ol>
                     <li>
                         <h1>Oliver’s Market</h1>
@@ -187,7 +187,7 @@
                     </li>
                 </ol>
             </div>
-            <div class="ChecarPreco">
+            <div class="tela Checar-Preco">
                 <ol>
                     <li>
                         <h1>Oliver’s Market</h1>
@@ -202,7 +202,35 @@
                     <li>
                         <h2 id="resultado"></h2>
                     </li>
-            </ol>
+                </ol>
+            </div>
+            <div class="tela produtos">
+                <ol>
+                    <li>
+                        <h1>
+                            Oliver’s Market
+                        </h1>
+                    </li>
+                    <li>
+                        <span>
+                            Lista de produtos:
+                        </span>                        
+                            <table id="produtosTable">
+                                <thead>
+                                    <tr>
+                                        <th>código</th>
+                                        <th>Produto</th>
+                                        <th>Preço</th>
+                                    </tr>                                                   
+                                </thead>
+                                <div class="scroll-tabela">
+                                <tbody id="tabela-produtos">
+                                                                          
+                            </tbody>
+                            </div>
+                        </table>
+                    </li>
+                </ol>
             </div>
     </div>
     </aside>
