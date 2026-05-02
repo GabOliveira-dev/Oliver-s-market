@@ -402,7 +402,7 @@ BNTTerminarVenda.addEventListener("click", (event) => {
     // ✅ sucesso
     console.log("Tudo certo")
 
-    mostrarTela(".terminar-venda")
+    mostrarTela(".Terminar-Venda")
 
     setTimeout(() => {
         const TRs = document.querySelectorAll(`tr[data-codigo]`)
